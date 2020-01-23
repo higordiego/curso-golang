@@ -18,4 +18,6 @@ func main() {
 	// go fale("Maria", "Ei....", 5000)
 	// go fale("João", "Opa....", 5000)
 
+	go fale("Maria", "Entendi!!", 10)
+	fale("João", "Parabéns!!", 5)
 }
