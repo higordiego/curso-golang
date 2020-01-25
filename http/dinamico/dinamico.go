@@ -1,12 +1,11 @@
 package main
 
-import "net/http"
-
-import "time"
-
-import "fmt"
-
-import "log"
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"time"
+)
 
 func horaCerta(w http.ResponseWriter, r *http.Request) {
 	s := time.Now().Format("02/01/2006 03:04:05")
