@@ -22,8 +22,11 @@ func juntar(entrada1, entrada2 <-chan string) <-chan string {
 
 func main() {
 	c := juntar(
-		html.Titulo("https://www.code3r.com.br", "https://www.google.com"),
-		html.Titulo("https://unileao.edu.br", "https://www.youtube.com"),
+		html.Titulo("https://www.cod3r.com.br", "https://www.youtube.com"),
+		html.Titulo("https://www.google.com", "https://unileao.edu.br"),
+		// html.Titulo("https://www.code3r.com.br", "https://www.google.com"),
+		// html.Titulo("https://unileao.edu.br", "https://www.youtube.com"),
 	)
-	fmt.Println(<-c)
+	fmt.Println(<-c, "|", <-c)
+	fmt.Println(<-c, "|", <-c)
 }
