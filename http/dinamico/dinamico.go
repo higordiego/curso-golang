@@ -1,0 +1,20 @@
+package main
+
+import "net/http"
+
+import "time"
+
+import "fmt"
+
+import "log"
+
+func horaCerta(w http.ResponseWriter, r *http.Request) {
+	s := time.Now().Format("02/01/2006 03:04:05")
+	fmt.Fprintf(w, "<h1> Hora certa: %s</h1>", s)
+}
+
+func main() {
+	http.HandleFunc("/horaCerta", horaCerta)
+	log.Println("executando...")
+	log.Fatal(http.ListenAndServe(":4000", nil))
+}
