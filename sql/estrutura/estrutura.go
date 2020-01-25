@@ -22,4 +22,5 @@ func main() {
 
 	exec(db, "create database if not exists cursogo")
 	exec(db, "use cursgo")
+	exec(db, "drop tables if exists usuarios")
 }
