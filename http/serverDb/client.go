@@ -56,8 +56,8 @@ func usuarioTodos(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(json))
 }
 
-// UsuariosHandler analisa o request e delega para funcao adequada
-func UsuariosHandler(w http.ResponseWriter, r *http.Request) {
+// UsuarioHandler analisa o request e delega para funcao adequada
+func UsuarioHandler(w http.ResponseWriter, r *http.Request) {
 	sid := strings.TrimPrefix(r.URL.Path, "/usuarios/")
 	id, _ := strconv.Atoi(sid)
 
@@ -70,8 +70,4 @@ func UsuariosHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprint(w, "Desculpa.... : )")
 	}
-}
-
-func main() {
-
 }
