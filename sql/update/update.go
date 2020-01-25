@@ -14,9 +14,13 @@ func main() {
 	}
 	defer db.Close()
 
-	stmt, _ := db.Prepare("update usuarios sett nome = ? where id = ?")
+	stmt, _ := db.Prepare("update usuarios set nome = ? where id = ?")
 
 	stmt.Exec("Teste ativo", 1)
 	stmt.Exec("Valeska", 2)
+
+	stmt2, _ := db.Prepare("delete from usuarios where id = ?")
+
+	stmt2.Exec(3)
 
 }
