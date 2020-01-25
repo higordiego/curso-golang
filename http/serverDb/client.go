@@ -34,6 +34,28 @@ func usuarioPorId(w http.ResponseWriter, r *http.Request, id int) {
 	fmt.Fprint(w, string(json))
 }
 
+func usuarioTodos(w http.ResponseWriter, r *http.Request) {
+	db, err := sql.Open("mysql", "root:root@/cursogo")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	rows, _ := db.Query("select id, nome from usuarios")
+
+	var usuarios []Usuario
+
+	for rows.Next() {
+		var usuario Usuario
+		rows.Scan(&usuario.ID, &usuario.Nome)
+		usuarios = append(usuarios, usuario)
+	}
+	json, _ := json.Marshal(usuarios)
+
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprint(w, string(json))
+}
+
 // UsuariosHandler analisa o request e delega para funcao adequada
 func UsuariosHandler(w http.ResponseWriter, r *http.Request) {
 	sid := strings.TrimPrefix(r.URL.Path, "/usuarios/")
